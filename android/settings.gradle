@@ -1,0 +1,3 @@
+rootProject.name = 'Ereka_Test'
+
+include ':app'
