@@ -1,18 +1,17 @@
 {
-    "compilerOptions": {
-      "baseUrl": ".",
-      "paths": {
-        "containers/*": ["./app/containers/*"],
-        "components/*": ["./app/components/*"],
-        "actions/*": ["./app/actions/*'"],
-        "constants/*": ["./app/constants/*"],
-        "images/*": ["./app/assets/media/images/*"],
-        "helpers/*": ["./app/helpers/*"],
-        "utils/*": ["./app/utils/*"],
-        "reducers/*": ["./app/reducers/*"],
-        "sagas/*": ["./app/sagas/*"],
-        "store/*": [".app/store/*"]
-      }
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "containers/*": ["./app/containers/*"],
+      "components/*": ["./app/components/*"],
+      "actions/*": ["./app/actions/*'"],
+      "constants/*": ["./app/constants/*"],
+      "images/*": ["./app/assets/media/images/*"],
+      "helpers/*": ["./app/helpers/*"],
+      "utils/*": ["./app/utils/*"],
+      "reducers/*": ["./app/reducers/*"],
+      "sagas/*": ["./app/sagas/*"],
+      "store/*": [".app/store/*"]
     }
   }
-  
+}
