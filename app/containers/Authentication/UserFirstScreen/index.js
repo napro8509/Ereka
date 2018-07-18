@@ -37,15 +37,19 @@ export default class UserFirstScreen extends React.Component {
 
   renderAboveContent = () => (
     <View>
-      <Image style={styles.logo} resizeMode="contain" source={logoImage} />
+      <Image
+        style={styles.logo}
+        resizeMode="contain"
+        source={logoImage}
+      />
       <Text style={styles.title}>
-Mở ra kho tri thức
+      Mở ra kho tri thức
       </Text>
       <Text style={styles.subTitle1}>
-Hỏi.Chia sẻ.Bàn luận
+      Hỏi.Chia sẻ.Bàn luận
       </Text>
       <Text style={styles.subTitle2}>
-Nhận giải pháp từ chuyên gia.
+      Nhận giải pháp từ chuyên gia.
       </Text>
     </View>
   );
@@ -76,11 +80,11 @@ Nhận giải pháp từ chuyên gia.
       />
       <View style={styles.textContainer}>
         <Text style={styles.orText}>
-hoặc
+        hoặc
         </Text>
         <TouchableOpacity onPress={this.goToRegister}>
           <Text style={styles.registerText}>
-Đăng kí tài khoản mới
+        Đăng kí tài khoản mới
           </Text>
         </TouchableOpacity>
       </View>
@@ -90,7 +94,11 @@ hoặc
   render() {
     return (
       <View style={styles.container}>
-        <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
+        <StatusBar
+          translucent
+          backgroundColor="transparent"
+          barStyle="light-content"
+        />
         {this.renderBackground()}
         {this.renderAboveContent()}
         {this.renderBellowContent()}

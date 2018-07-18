@@ -1,9 +1,10 @@
-import { USER_LOGIN, USER_LOGOUT } from 'constants/actionsType';
+import { USER_LOGIN, USER_LOGOUT, USER_LOGIN_SUCCESS } from 'constants/actionsType';
 import { USER_REGISTER_SUCCESS } from 'constants/routers';
 
 const initialState = {
   isLogin: false,
   userinfo: {},
+  token: '',
 };
 
 const auth = (state = initialState, action) => {
@@ -11,7 +12,6 @@ const auth = (state = initialState, action) => {
     case USER_LOGIN: {
       return {
         ...state,
-        isLogin: true,
       };
     }
     case USER_LOGOUT:
@@ -23,6 +23,12 @@ const auth = (state = initialState, action) => {
       return {
         ...state,
         userinfo: action.userinfo,
+      };
+    case USER_LOGIN_SUCCESS:
+      return {
+        ...state,
+        token: action.token,
+        isLogin: true,
       };
     default:
       return state;

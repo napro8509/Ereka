@@ -1,11 +1,13 @@
 /* eslint no-undef: "off" */
-import { createStore, combineReducers } from 'redux';
-import auth from '../reducers/authReducer';
-import error from '../reducers/errorReducers';
+import { createStore, applyMiddleware } from 'redux';
+import createSagaMiddleware from 'redux-saga';
+import rootSaga from '../sagas/authSagas';
+import rootReducer from '../reducers/rootReducer';
 
-const rootReducer = combineReducers({ auth, error });
+const sagaMiddleware = createSagaMiddleware();
 
 export default (configureStore = () => {
-  const store = createStore(rootReducer);
+  const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+  sagaMiddleware.run(rootSaga);
   return store;
 });

@@ -1,6 +1,6 @@
 import { StyleSheet, Dimensions } from 'react-native';
 import { PADDING_HORIZONTAL, APP_FONT_SIZE } from 'constants/styleConstants';
-import { CLR_MAIN_THEME, CLR_BLACK } from 'constants/colors';
+import { CLR_MAIN_THEME, CLR_BLACK, CLR_WHITE } from 'constants/colors';
 
 const { height } = Dimensions.get('window');
 
@@ -8,6 +8,7 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: PADDING_HORIZONTAL,
+    backgroundColor: CLR_WHITE,
   },
   wrapper: {
     flex: 1,

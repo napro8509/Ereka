@@ -11,7 +11,11 @@ export default StyleSheet.create({
     color: CLR_MAIN_THEME,
     fontWeight: 'bold',
   },
-  bellowContent: {},
+  bellowContent: {
+    padding: 10,
+    justifyContent: 'space-between',
+    flex: 1,
+  },
   wrapper: {
     position: 'absolute',
     top: 0,

@@ -21,7 +21,11 @@ class UserRegisterSuccess extends Component {
         Dòng thông tin chúc mừng ngừoi dũng đã đăng kí thành công
       </Text>
       <Separator spaceHeight={20} />
-      <Avatar imageSource={avatarLogin} size="extra-large" center />
+      <Avatar
+        imageSource={avatarLogin}
+        size="extra-large"
+        center
+      />
       <Separator spaceHeight={40} />
       <CustomButton
         backgroundColor={CLR_MAIN_THEME}
@@ -37,8 +41,14 @@ class UserRegisterSuccess extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.wrapper}>
-          <OverlayImage imageSource={bgStars} resizeMode="contain" height="50%" />
-          <OverlayView renderView={this.renderMainView} />
+          <OverlayImage
+            imageSource={bgStars}
+            resizeMode="contain"
+            height="50%"
+          />
+          <OverlayView
+            renderView={this.renderMainView}
+          />
         </View>
       </View>
     );

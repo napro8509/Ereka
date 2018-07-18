@@ -33,7 +33,6 @@ class UserOTPInputScreen extends Component {
   componentDidMount = () => {
     const { navigation } = this.props;
     const username = navigation.getParam('username');
-    console.log(username);
     this.setState({ username });
   };
 

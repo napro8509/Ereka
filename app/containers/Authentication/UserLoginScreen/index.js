@@ -1,9 +1,7 @@
 /* eslint react/prop-types: 0 */
 // #region import
 import React, { Component } from 'react';
-import {
-  View, Text,
-} from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -19,11 +17,9 @@ import DefaultStatusBar from 'components/DefaultStatusBar';
 import { APP_FONT_SIZE, STATUS_BAR_HEIGHT } from 'constants/styleConstants';
 import { CLR_MAIN_THEME, CLR_WHITE } from 'constants/colors';
 import { bgLogin4, avatarLogin } from 'constants/urlImage';
-import { USER_OTP_INPUT_SCREEN } from 'constants/routers';
-import Api from 'utils/apis/RequestApi';
+import { USER_OTP_INPUT_SCREEN, USER_REGISTER_SCREEN } from 'constants/routers';
 import styles from './styles';
 import { userLogin } from '../../../actions/authActions';
-import { showError } from '../../../actions/errorActions';
 // #endregion
 class UserLoginScreen extends Component {
   constructor(props) {
@@ -35,18 +31,30 @@ class UserLoginScreen extends Component {
   }
   // #region internalFunction
 
+  componentDidUpdate() {
+    const { isLogin, navigation } = this.props;
+    console.log('day la login', isLogin);
+    if (isLogin) navigation.navigate(USER_OTP_INPUT_SCREEN);
+  }
+
   handleSignIn = () => {
-    const { navigation, dispatch } = this.props;
+    const { loginAction } = this.props;
     const { username, password } = this.state;
-    Api.auth.login({ username, password }).then((res) => {
-      console.log(res);
-      if (res.code !== 200) {
-        dispatch(showError(res.message));
-      } else {
-        dispatch(userLogin());
-        navigation.navigate(USER_OTP_INPUT_SCREEN);
-      }
-    });
+    loginAction(username, password);
+    // Api.auth.login({ username, password }).then((res) => {
+    //   console.log(res);
+    //   if (!res.token) {
+    //     dispatch(showError(res.message));
+    //   } else {
+    //     dispatch(userLogin());
+    //     navigation.navigate(USER_OTP_INPUT_SCREEN);
+    //   }
+    // });
+  };
+
+  handleRegister = () => {
+    const { navigation } = this.props;
+    navigation.navigate(USER_REGISTER_SCREEN);
   };
 
   handleEmailInput = (username) => {
@@ -111,13 +119,17 @@ Quên Mật Khẩu ?
           renderIcon={this.renderIcon}
         />
         <Separator spaceHeight={30} />
-        <Text>
-          Bạn chưa có tài khoản?
-          {' '}
-          <Text style={styles.forgotPass}>
-Đăng kí
+        <View style={{ flexDirection: 'row' }}>
+          <Text>
+Bạn chưa có tài khoản?
+            {' '}
           </Text>
-        </Text>
+          <TouchableOpacity onPress={this.handleRegister}>
+            <Text style={styles.forgotPass}>
+Đăng kí
+            </Text>
+          </TouchableOpacity>
+        </View>
         <Separator spaceHeight={30} />
       </View>
     );
@@ -134,7 +146,7 @@ Quên Mật Khẩu ?
             <React.Fragment>
               <Separator spaceHeight={STATUS_BAR_HEIGHT} />
               <HeaderLogin title="Đăng Nhập" />
-              <View style={{ padding: 10, justifyContent: 'space-between', flex: 1 }}>
+              <View style={styles.bellowContent}>
                 {this.renderAboveContent()}
                 {this.renderBellowContent()}
               </View>
@@ -146,4 +158,21 @@ Quên Mật Khẩu ?
   }
 }
 
-export default connect()(UserLoginScreen);
+function mapStateToProps(state) {
+  return {
+    isLogin: state.auth.isLogin,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    loginAction: (username, password) => {
+      dispatch(userLogin(username, password));
+    },
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(UserLoginScreen);

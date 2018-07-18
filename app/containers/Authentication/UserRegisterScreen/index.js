@@ -17,7 +17,6 @@ import { avatarLogin, bgLogin4 } from 'constants/urlImage';
 import { USER_OTP_INPUT_SCREEN } from 'constants/routers';
 import { checkSamePassWord, checkPhoneNumber } from 'utils/helper';
 import Api from 'utils/apis/RequestApi';
-
 import styles from './styles';
 
 class UserRegisterScreen extends React.Component {
@@ -70,10 +69,7 @@ class UserRegisterScreen extends React.Component {
   renderRegisterInput() {
     return (
       <View style={styles.mainContent}>
-        <CustomInput
-          title="Email/ Số điện thoại"
-          onChangeText={this.handlePhoneInput}
-        />
+        <CustomInput title="Email/ Số điện thoại" onChangeText={this.handlePhoneInput} />
         <Separator spaceHeight={20} />
         <CustomInput
           title="Mật khẩu"
@@ -116,8 +112,7 @@ class UserRegisterScreen extends React.Component {
         <Avatar imageSource={avatarLogin} roundImage center />
         <View style={styles.textInfo}>
           <Text style={styles.text}>
-            Hệ thống đang trong giai đoạn thử nghiệm,
-            vui lòng sử dụng số điện thoại Viettel để đăng
+            Hệ thống đang trong giai đoạn thử nghiệm, vui lòng sử dụng số điện thoại Viettel để đăng
             ký.
           </Text>
         </View>

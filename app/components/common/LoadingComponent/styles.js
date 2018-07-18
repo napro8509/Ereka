@@ -2,13 +2,12 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
-    position: 'absolute',
-    top: 0,
+    flex: 1,
+    justifyContent: 'center',
     left: 0,
+    top: 0,
     width: '100%',
     height: '100%',
-  },
-  wrapper: {
-    flex: 1,
+    backgroundColor: 'green',
   },
 });
